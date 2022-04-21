@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Festive&family=Pacifico&family=Permanent+Marker&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Festive&family=Indie+Flower&family=Pacifico&family=Permanent+Marker&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Festive&family=Gruppo&family=Indie+Flower&family=Pacifico&family=Permanent+Marker&family=Ubuntu:ital@1&display=swap');
+        .container{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            margin: 3% auto;
+            width: 80%
+        }
+
+        .category_title{
+            padding: 5px 0px;
+            font-size: 28px;
+            font-family: 'Festive', cursive;
+        }
+
+        .items{
+            font-size: 25px;
+            font-family: 'Indie Flower', cursive;
+            font-weight: 700;
+        }
+        #submit{
+            margin: 25px 40%;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid blue;
+            width: 200px;
+            background-color: azure;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Gruppo';
+
+        }
+
+    </style>
+{%endblock head%}    
+
+
+{% block content %}
+    <form action="{% url 'place_order' %}" method="post">
+        {% csrf_token%}
+        <div class="container">
+            {% for category, items in menu.items %}
+                <div class="category"> 
+                <div class="category_title">{{category}}</div>
+                    {% for i in items %}
+                    <div class="items"> {{i.title}}   <span class="price">${{i.price}}</span></div>
+                        <input type="number" name="order_{{i.id}}" class="item_count" id="order_{{i.id}}" min="0" max="10" placeholder="0">
+                {% endfor%}
+            </div>
+            {% endfor%}    
+            <input type="text" name="name" id="name" placeholder="Enter name here">
+            <button type="submit" id="submit">Place order</button>
+            </div>
+        </form>
+{% endblock content %}

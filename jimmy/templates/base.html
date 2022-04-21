@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> {% block title %}Home{% endblock title %}</title>
+    {% block head %}{% endblock head %}
+ 
+    <style>
+        body{
+            margin: 0px !important;
+        }
+        .nav-bar{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 10px 15px;
+            background-color: grey;
+            margin: 0px;
+ 
+        }
+        .nav-links, .nav-name{
+            display: flex;
+            justify-content: space-around
+        }
+    </style>
+</head>
+<body>
+ 
+ 
+    <header>
+        <div class="nav-bar">
+            <div class="nav-element"></div>
+            <div class="nav-name">Giasi's Resturant</div>
+            <div class="nav-links">
+                <a class="nav-item" href="{% url 'menu_url' %}">Home</a>
+                <a class="nav-item" href="{% url 'about_us' %}">About us</a>
+                <a class="nav-item" href="{% url 'menu_url' %}">Contact</a>
+            </div>
+        </div>
+    </header>
+ 
+    {% block content %}
+        <h1>Welcome to the Homepage!</h1>
+        <h2>May the Force be with you!</h2>
+        <a href="{% url 'login_url' %}">Log in</a>
+    {% endblock content %}
+</body>
+</html>

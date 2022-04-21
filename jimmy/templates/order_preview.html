@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+{% block head %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Festive&family=Indie+Flower&family=Pacifico&family=Permanent+Marker&family=Ubuntu:ital@1&display=swap');
+
+    .order_container{
+        margin: auto;
+        padding: 20px;
+        border: 7px solid blue;
+        border-radius: 20px;
+        width: 40%;
+        background-color: blueviolet;
+        }
+    .title{
+        width: 30%;
+        text-align: right;
+        margin-right: 0;
+        font-family: ubuntu;
+    }
+
+    .price{
+        width: 30%;
+        text-align: center;
+        margin-right: 0;
+        font-family: ubuntu;
+
+    }
+
+    .quantity{
+        width: 30%;
+        text-align: left;
+        margin-right: 0;
+        font-family: ubuntu;
+    }
+</style>
+{% endblock head %}
+
+{% block content %}
+    <div class="order_container">
+        {% for i, q in order.contents.items %}
+            <div class="item">
+                <span class="title">{{ i.title }}</span>
+                <span class="price">{{ i.price }}</span>
+                <span class="quantity"> {{q}}</span>
+            </div>
+            {% endfor%}
+        Total amount: ${{order.get_bill}}
+
+    <table>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        {% for i, q in order.contents.items %}
+        <tr>
+            <td>{{i.title}}</td>
+            <td>{{i.price}}</td>
+            <td>{{q}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

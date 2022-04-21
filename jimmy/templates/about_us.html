@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head%}
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Festive&family=Indie+Flower&family=Pacifico&family=Permanent+Marker&family=Ubuntu:ital@1&display=swap');
+        body{
+            padding: 5px 0px;
+            font-size: 25px;
+            font-family: 'Ubuntu', italic; 
+
+        
+        }
+
+        .container{
+            width: 50% ;
+            margin: 12% auto;
+            border: 8px solid rgb(97, 146, 236);  /*border around the paragraph*/
+            border-radius: 20px;                  /*adds smooth corners to the border*/
+            background-color: burlywood;
+            padding: 15px;
+            text-align: center;
+            
+        }
+        
+    </style>
+
+{% endblock head%}
+
+{% block content%}
+
+    
+<h1>About us:</h1>
+
+
+
+    <div class="container">
+        <div class="content">
+            <p>We're Giasi, the amazing Resturant that serves the best dishes.</p>
+            <p>In all continents of the world (except Antarctica) you can find Giasi's resturant, home of the finest dishes created using decades of practise.</p>
+        </div>
+    </div>
+
+{% endblock content%}
+
+
